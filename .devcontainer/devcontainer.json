@@ -1,0 +1,33 @@
+{
+  "name": "TikTok & Reels Development Environment",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "22"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "enableNonRootDocker": true
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/setup-tools.sh",
+  "forwardPorts": [54321, 54322, 54323, 54324],
+  "portsAttributes": {
+    "54321": { "label": "Supabase API (local)" },
+    "54322": { "label": "Supabase Database (local)" },
+    "54323": { "label": "Supabase Studio (local)" },
+    "54324": { "label": "Supabase Inbucket (local)" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "fwcd.kotlin",
+        "vscjava.vscode-gradle"
+      ]
+    }
+  },
+  "remoteUser": "vscode"
+}
